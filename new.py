@@ -38,8 +38,9 @@ while 1:
     if(button.read() != 0):
         entra=True
         ledPin.write(1)
+        print("Boton 1 presionado")
     
-    if(button2.read()!=0 & entra):
+    if(button2.read()!=0 && entra):
         lcdDisplay.setCursor(0, 0)
         counter = counter + 1
         lcdDisplay.write(str(counter))
@@ -47,7 +48,7 @@ while 1:
         g = random.randint(0, 255)
         b = random.randint(0, 255)
         lcdDisplay.setColor(r,g,b)
-        print("Boton presionado")
+        print("Boton 2 presionado")
         time.sleep(0.1)
         ledPin.write(0)
     
