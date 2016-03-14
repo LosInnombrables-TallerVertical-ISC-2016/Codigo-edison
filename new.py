@@ -8,7 +8,6 @@ import random
 
 
 counter = 0
-counter = 2
 # Create the button object using GPIO pin 0
 button = mraa.Gpio(2)
 button2 = mraa.Gpio(3)
@@ -35,10 +34,11 @@ while 1:
         ledPin.write(1)
         print("Boton 1 presionado")
         time.sleep(1.0)
+        
     if(button2.read() != 0):
         sale=True
         ledPin.write(1)
-        print("Boton 1 presionado")
+        print("Boton 2 presionado")
         time.sleep(1.0)
     if(entra):
         if(button2.read()!=0):
@@ -50,10 +50,10 @@ while 1:
             b = random.randint(0, 255)
             lcdDisplay.setColor(r,g,b)
             print("Boton 2 presionado, entro")
-            time.sleep(1.0)
             ledPin.write(0)
             entra=False
             sale=False
+            time.sleep(1.0)
     if(sale):
         if(button.read()!=0):
             lcdDisplay.setCursor(0, 0)
@@ -64,10 +64,10 @@ while 1:
             b = random.randint(0, 255)
             lcdDisplay.setColor(r,g,b)
             print("Boton 1 presionado, salio")
-            time.sleep(1.0)
             ledPin.write(0)
             entra=False
             sale=False
+            time.sleep(1.0)
     
 
 # Delete the buzzer object
