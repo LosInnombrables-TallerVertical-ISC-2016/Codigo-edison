@@ -43,6 +43,5 @@ while 1:
 
 # Delete the buzzer object
 del buzzer
-
 # Delete the button object
 del button
