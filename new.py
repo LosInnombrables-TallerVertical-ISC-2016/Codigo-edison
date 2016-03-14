@@ -37,7 +37,8 @@ while 1:
         g = random.randint(0, 255)
         b = random.randint(0, 255)
         lcdDisplay.setColor(r,g,b)
-        print("Boton presionado-----")
+        print("Boton presionado-----2")
+        time.sleep(0.0001)
        
 
 # Delete the buzzer object
