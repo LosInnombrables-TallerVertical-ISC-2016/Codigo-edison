@@ -40,7 +40,7 @@ while 1:
         ledPin.write(1)
         print("Boton 1 presionado")
     
-    if(button2.read()!=0 && entra):
+    if(button2.read()!=0 & entra):
         lcdDisplay.setCursor(0, 0)
         counter = counter + 1
         lcdDisplay.write(str(counter))
@@ -49,8 +49,9 @@ while 1:
         b = random.randint(0, 255)
         lcdDisplay.setColor(r,g,b)
         print("Boton 2 presionado")
-        time.sleep(0.1)
+        time.sleep(1.0)
         ledPin.write(0)
+        entra=False
     
     
 
@@ -59,3 +60,6 @@ del buzzer
 
 # Delete the button object
 del button
+
+# Delete the button object
+del button2
