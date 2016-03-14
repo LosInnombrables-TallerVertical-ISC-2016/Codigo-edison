@@ -19,7 +19,7 @@ button2.dir(mraa.DIR_IN)
 
 ledPin = mraa.Gpio(4)
 ledPin.dir(mraa.DIR_OUT)
-ledPin.write(0)
+ledPin.write(1)
 
 
 chords = [upmBuzzer.DO, upmBuzzer.RE, upmBuzzer.MI, upmBuzzer.FA, 
@@ -39,19 +39,21 @@ while 1:
         entra=True
         ledPin.write(1)
         print("Boton 1 presionado")
-    
-    if(button2.read()!=0 & entra):
-        lcdDisplay.setCursor(0, 0)
-        counter = counter + 1
-        lcdDisplay.write(str(counter))
-        r = random.randint(0, 255)
-        g = random.randint(0, 255)
-        b = random.randint(0, 255)
-        lcdDisplay.setColor(r,g,b)
-        print("Boton 2 presionado")
         time.sleep(1.0)
-        ledPin.write(0)
-        entra=False
+    
+    if(entra):
+        if(button2.read()!=0):
+            lcdDisplay.setCursor(0, 0)
+            counter = counter + 1
+            lcdDisplay.write(str(counter))
+            r = random.randint(0, 255)
+            g = random.randint(0, 255)
+            b = random.randint(0, 255)
+            lcdDisplay.setColor(r,g,b)
+            print("Boton 2 presionado")
+            time.sleep(1.0)
+            ledPin.write(0)
+            entra=False
     
     
 
