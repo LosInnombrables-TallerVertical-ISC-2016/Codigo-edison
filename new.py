@@ -25,7 +25,6 @@ chords = [upmBuzzer.DO, upmBuzzer.RE, upmBuzzer.MI, upmBuzzer.FA,
 lcdDisplay = lcd.Jhd1313m1(0, 0x3E, 0x62)
 lcdDisplay.setColor(0,0,0)
 
-
 lcdDisplay.write(str(counter))
 
 # Read the input and print, waiting one second between readings
