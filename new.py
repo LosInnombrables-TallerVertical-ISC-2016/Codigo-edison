@@ -17,6 +17,11 @@ buzzer = upmBuzzer.Buzzer(3)
 button.dir(mraa.DIR_IN)
 button2.dir(mraa.DIR_IN)
 
+ledPin = mraa.Gpio(4)
+ledPin.dir(mraa.DIR_OUT)
+ledPin.write(0)
+
+
 chords = [upmBuzzer.DO, upmBuzzer.RE, upmBuzzer.MI, upmBuzzer.FA, 
           upmBuzzer.SOL, upmBuzzer.LA, upmBuzzer.SI, upmBuzzer.DO, 
           upmBuzzer.SI];
@@ -24,12 +29,17 @@ chords = [upmBuzzer.DO, upmBuzzer.RE, upmBuzzer.MI, upmBuzzer.FA,
 #Crete the lcd object 
 lcdDisplay = lcd.Jhd1313m1(0, 0x3E, 0x62)
 lcdDisplay.setColor(0,0,0)
+entra=False
 
 lcdDisplay.write(str(counter))
 
 # Read the input and print, waiting one second between readings
 while 1:
     if(button.read() != 0):
+        entra=True
+        ledPin.write(1)
+    
+    if(button2.read()!=0 & entra):
         lcdDisplay.setCursor(0, 0)
         counter = counter + 1
         lcdDisplay.write(str(counter))
@@ -37,11 +47,14 @@ while 1:
         g = random.randint(0, 255)
         b = random.randint(0, 255)
         lcdDisplay.setColor(r,g,b)
-        print("Boton presionado-----2")
-        time.sleep(0.0001)
-       
+        print("Boton presionado")
+        time.sleep(0.1)
+        ledPin.write(0)
+    
+    
 
 # Delete the buzzer object
 del buzzer
+
 # Delete the button object
 del button
