@@ -8,13 +8,14 @@ import random
 
 
 counter = 0
-
+counter = 2
 # Create the button object using GPIO pin 0
 button = mraa.Gpio(2)
-
+button2 = mraa.Gpio(3)
 # Create the buzzer object using GPIO pin 5
 buzzer = upmBuzzer.Buzzer(3)
 button.dir(mraa.DIR_IN)
+button2.dir(mraa.DIR_IN)
 
 chords = [upmBuzzer.DO, upmBuzzer.RE, upmBuzzer.MI, upmBuzzer.FA, 
           upmBuzzer.SOL, upmBuzzer.LA, upmBuzzer.SI, upmBuzzer.DO, 
@@ -29,21 +30,16 @@ lcdDisplay.write(str(counter))
 
 # Read the input and print, waiting one second between readings
 while 1:
-	if(button.read() != 0):
-		lcdDisplay.setCursor(0, 0)
-		counter = counter + 1
-		lcdDisplay.write(str(counter))
-		r = random.randint(0, 255)
-		g = random.randint(0, 255)
-		b = random.randint(0, 255)
-		lcdDisplay.setColor(r,g,b)
-		for chord_ind in range (0,1):
-    			# play each note for one second
-			print("Boton presionado")
-    			buzzer.playSound(chords[chord_ind], 1000000)
-    		time.sleep(0.0001)
-	
-	
+    if(button.read() != 0):
+        lcdDisplay.setCursor(0, 0)
+        counter = counter + 1
+        lcdDisplay.write(str(counter))
+        r = random.randint(0, 255)
+        g = random.randint(0, 255)
+        b = random.randint(0, 255)
+        lcdDisplay.setColor(r,g,b)
+        print("Boton presionado")
+       
 
 # Delete the buzzer object
 del buzzer
