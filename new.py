@@ -29,11 +29,7 @@ lcdDisplay.write(str(counter))
 
 # Read the input and print, waiting one second between readings
 while 1:
-    if(button.read() != 0):
-        entra=True
-        ledPin.write(1)
-        print("Boton 1 presionado")
-        time.sleep(0.5)
+    
         
         
     if(entra):
@@ -50,13 +46,13 @@ while 1:
             entra=False
             sale=False
             time.sleep(0.5)
+    else: 
+        if(button2.read() != 0):
+            sale=True
+            ledPin.write(1)
+            print("Boton 2 presionado")
+            time.sleep(0.5)
             
-            
-    if(button2.read() != 0):
-        sale=True
-        ledPin.write(1)
-        print("Boton 2 presionado")
-        time.sleep(0.5)
         
     if(sale):
         if(button.read()!=0):
@@ -72,7 +68,12 @@ while 1:
             entra=False
             sale=False
             time.sleep(0.5)
-       
+    else:
+        if(button.read() != 0):
+            entra=True
+            ledPin.write(1)
+            print("Boton 1 presionado")
+            time.sleep(0.5)  
             
     
 
