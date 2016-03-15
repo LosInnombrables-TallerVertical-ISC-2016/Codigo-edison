@@ -33,7 +33,7 @@ while 1:
         entra=True
         ledPin.write(1)
         print("Boton 1 presionado")
-        time.sleep(1.0)
+        
         
     if(entra):
         if(button2.read()!=0):
@@ -48,13 +48,13 @@ while 1:
             ledPin.write(0)
             entra=False
             sale=False
-            time.sleep(0.5)
+            
             
     if(button2.read() != 0):
         sale=True
         ledPin.write(1)
         print("Boton 2 presionado")
-        time.sleep(1.0)
+        
     if(sale):
         if(button.read()!=0):
             lcdDisplay.setCursor(0, 0)
@@ -68,7 +68,9 @@ while 1:
             ledPin.write(0)
             entra=False
             sale=False
-            time.sleep(0.5)
+    
+    time.sleep(1.0)
+            
     
 
 # Delete the buzzer object
