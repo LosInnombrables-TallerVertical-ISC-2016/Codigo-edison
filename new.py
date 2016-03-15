@@ -88,7 +88,7 @@ while 1:
             print("Boton 1 presionado")
             lcdDisplay.setCursor(0, 0)
             lcdDisplay.write("                ")
-            if(counter>counter2):
+            if(counter<counter2):
                 lcdDisplay.setCursor(0, 0)
                 lcdDisplay.write("Est-1")
             else:
