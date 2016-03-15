@@ -7,24 +7,24 @@ import sys
 import random
 
 import json
-import urllib.request
-from pip._vendor.requests.packages.urllib3.connectionpool import xrange
-from setuptools.command.build_ext import if_dl
-from builtins import int
+import urllib
+#import urllib.request
 url='http://10.43.14.124:3000/api'
-r = urllib.request.urlopen(url)
+r = urllib.urlopen(url)
 
+data =json.loads('{"_id":"56e84d461a12721263023879","name":"Area 1","generalCapacity":20,"handicapCapacity":5,"generalAvailable":20,"handicapAvailable":5,"__v":0}')
 contador=0
+print(data['name'])
 palabra= str(r.read())
 
-for y in xrange(3, palabra.__len__()):
+for y in range(0, palabra.__len__()):
         if(palabra[y]=="{"):
             contador=contador+1;
 
 arreglo = ['']*contador
 contador=-1
 escribe=False
-for x in xrange(3, palabra.__len__()):
+for x in range(0, palabra.__len__()):
     if (palabra[x]=="{"):
         contador=contador+1
         escribe=True
@@ -39,6 +39,10 @@ print(arreglo[0])
 print(arreglo[1])
 pal=arreglo[0]
 ls=json.loads(pal)
+
+print (ls['name'])
+pal=arreglo[1]
+ls=json.loads(pal)
 print (ls['name'])
 
 
@@ -49,7 +53,7 @@ print (ls['name'])
 pal=arreglo[0]
 ls=json.loads(pal)
 counter = ls['generalAvailable']
-pal=arreglo[0]
+pal=arreglo[1]
 ls=json.loads(pal)
 counter2 = ls['generalAvailable']
 # Create the button object using GPIO pin 0
