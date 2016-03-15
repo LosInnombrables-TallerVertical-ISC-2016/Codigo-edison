@@ -46,9 +46,12 @@ print (ls['name'])
 
 
 
-
-counter = 0
-counter2 = 5
+pal=arreglo[0]
+ls=json.loads(pal)
+counter = ls['generalAvailable']
+pal=arreglo[0]
+ls=json.loads(pal)
+counter2 = ls['generalAvailable']
 # Create the button object using GPIO pin 0
 button = mraa.Gpio(2)
 button2 = mraa.Gpio(3)
@@ -87,6 +90,8 @@ while 1:
             lcdDisplay.setCursor(1, 0)
             counter = counter + 1
             lcdDisplay.write(str(counter))
+            lcdDisplay.setCursor(1, 7)
+            lcdDisplay.write(str(counter2))
             r = random.randint(0, 255)
             g = random.randint(0, 255)
             b = random.randint(0, 255)
@@ -113,6 +118,8 @@ while 1:
             lcdDisplay.setCursor(1, 0)
             counter = counter - 1
             lcdDisplay.write(str(counter))
+            lcdDisplay.setCursor(1, 7)
+            lcdDisplay.write(str(counter2))
             r = random.randint(0, 255)
             g = random.randint(0, 255)
             b = random.randint(0, 255)
