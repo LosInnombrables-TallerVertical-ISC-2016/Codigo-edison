@@ -8,6 +8,7 @@ import random
 
 
 counter = 0
+counter2 = 5
 # Create the button object using GPIO pin 0
 button = mraa.Gpio(2)
 button2 = mraa.Gpio(3)
@@ -34,13 +35,13 @@ lcdDisplay.setColor(r,g,b)
 # Read the input and print, waiting one second between readings
 while 1:
     
-        
+    
         
     if(entra):
         if(button2.read()!=0):
-            lcdDisplay.setCursor(0, 0)
+            lcdDisplay.setCursor(2, 0)
             lcdDisplay.write("                ")
-            lcdDisplay.setCursor(0, 0)
+            lcdDisplay.setCursor(2, 0)
             counter = counter + 1
             lcdDisplay.write(str(counter))
             r = random.randint(0, 255)
@@ -52,6 +53,8 @@ while 1:
             entra=False
             sale=False
             time.sleep(0.5)
+            lcdDisplay.setCursor(0, 0)
+            lcdDisplay.write("                ")
     else: 
         if(button2.read() != 0):
             sale=True
@@ -62,16 +65,15 @@ while 1:
         
     if(sale):
         if(button.read()!=0):
-            lcdDisplay.setCursor(0, 0)
+            lcdDisplay.setCursor(2, 0)
             lcdDisplay.write("                ")
-            lcdDisplay.setCursor(0, 0)
+            lcdDisplay.setCursor(2, 0)
             counter = counter - 1
             lcdDisplay.write(str(counter))
             r = random.randint(0, 255)
             g = random.randint(0, 255)
             b = random.randint(0, 255)
             lcdDisplay.setColor(r,g,b)
-            
             print("Boton 1 presionado, salio")
             ledPin.write(0)
             entra=False
@@ -82,8 +84,19 @@ while 1:
             entra=True
             ledPin.write(1)
             print("Boton 1 presionado")
-            time.sleep(0.5)  
-            
+            lcdDisplay.setCursor(0, 0)
+            lcdDisplay.write("                ")
+            if(counter>counter2):
+                lcdDisplay.setCursor(0, 0)
+                lcdDisplay.write("Dirigete al estacionamiento 1")
+            else:
+                lcdDisplay.setCursor(0, 0)
+                lcdDisplay.write("Dirigete al estacionamiento 2")  
+            r = random.randint(0, 255)
+            g = random.randint(0, 255)
+            b = random.randint(0, 255)
+            lcdDisplay.setColor(r,g,b)
+            time.sleep(0.5)
     
 
 # Delete the buzzer object
