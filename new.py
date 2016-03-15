@@ -26,7 +26,7 @@ lcdDisplay.setColor(0,0,0)
 entra=False
 sale=False
 lcdDisplay.write(str(counter))
-lcdDisplay.write("hola crayola")
+
 # Read the input and print, waiting one second between readings
 while 1:
     if(button.read() != 0):
@@ -48,6 +48,7 @@ while 1:
             ledPin.write(0)
             entra=False
             sale=False
+            time.sleep(0.5)
             
     if(button2.read() != 0):
         sale=True
@@ -67,7 +68,7 @@ while 1:
             ledPin.write(0)
             entra=False
             sale=False
-            
+            time.sleep(0.5)
     
 
 # Delete the buzzer object
