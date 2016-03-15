@@ -28,6 +28,8 @@ entra=False
 sale=False
 lcdDisplay.setCursor(0, 0)
 lcdDisplay.write("Hello world!!")
+lcdDisplay.setCursor(1, 7)
+lcdDisplay.write(str(counter2))
 r = random.randint(0, 255)
 g = random.randint(0, 255)
 b = random.randint(0, 255)
@@ -88,10 +90,10 @@ while 1:
             lcdDisplay.write("                ")
             if(counter>counter2):
                 lcdDisplay.setCursor(0, 0)
-                lcdDisplay.write("Estacionamiento 1")
+                lcdDisplay.write("Est-1")
             else:
                 lcdDisplay.setCursor(0, 0)
-                lcdDisplay.write("Estacionamiento 2")  
+                lcdDisplay.write("Est-2")  
             r = random.randint(0, 255)
             g = random.randint(0, 255)
             b = random.randint(0, 255)
