@@ -39,9 +39,9 @@ while 1:
         
     if(entra):
         if(button2.read()!=0):
-            lcdDisplay.setCursor(2, 0)
+            lcdDisplay.setCursor(0, 2)
             lcdDisplay.write("                ")
-            lcdDisplay.setCursor(2, 0)
+            lcdDisplay.setCursor(0, 2)
             counter = counter + 1
             lcdDisplay.write(str(counter))
             r = random.randint(0, 255)
@@ -65,9 +65,9 @@ while 1:
         
     if(sale):
         if(button.read()!=0):
-            lcdDisplay.setCursor(2, 0)
+            lcdDisplay.setCursor(0, 2)
             lcdDisplay.write("                ")
-            lcdDisplay.setCursor(2, 0)
+            lcdDisplay.setCursor(0, 2)
             counter = counter - 1
             lcdDisplay.write(str(counter))
             r = random.randint(0, 255)
