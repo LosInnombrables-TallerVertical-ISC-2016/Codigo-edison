@@ -6,6 +6,46 @@ import pyupm_i2clcd as lcd
 import sys
 import random
 
+import json
+import urllib.request
+from pip._vendor.requests.packages.urllib3.connectionpool import xrange
+from setuptools.command.build_ext import if_dl
+from builtins import int
+url='http://10.43.14.124:3000/api'
+r = urllib.request.urlopen(url)
+
+contador=0
+palabra= str(r.read())
+
+for y in xrange(3, palabra.__len__()):
+        if(palabra[y]=="{"):
+            contador=contador+1;
+
+arreglo = ['']*contador
+contador=-1
+escribe=False
+for x in xrange(3, palabra.__len__()):
+    if (palabra[x]=="{"):
+        contador=contador+1
+        escribe=True
+    
+    if (escribe):
+        arreglo[contador]=arreglo[contador]+palabra[x]
+    
+    if (palabra[x]=="}"):
+        escribe=False        
+
+print(arreglo[0])
+print(arreglo[1])
+pal=arreglo[0]
+ls=json.loads(pal)
+print (ls['name'])
+
+
+
+
+
+
 
 counter = 0
 counter2 = 5
@@ -20,6 +60,7 @@ button2.dir(mraa.DIR_IN)
 ledPin = mraa.Gpio(5)
 ledPin.dir(mraa.DIR_OUT)
 ledPin.write(1)
+
 
 #Crete the lcd object 
 lcdDisplay = lcd.Jhd1313m1(0, 0x3E, 0x62)
