@@ -1,8 +1,8 @@
 import json
 import urllib
-import urllib.request
+#import urllib.request
+import setuptools.command.build_ext 
 
-from builtins import int
 
 url='http://10.43.14.124:3000/api'
 r = urllib.request.urlopen(url)
