@@ -26,8 +26,11 @@ lcdDisplay.setColor(0,0,0)
 entra=False
 sale=False
 lcdDisplay.setCursor(0, 0)
-lcdDisplay.write(str(counter))
-lcdDisplay.setColor(0,0,0)
+lcdDisplay.write("Hello world!!")
+r = random.randint(0, 255)
+g = random.randint(0, 255)
+b = random.randint(0, 255)
+lcdDisplay.setColor(r,g,b)
 # Read the input and print, waiting one second between readings
 while 1:
     
