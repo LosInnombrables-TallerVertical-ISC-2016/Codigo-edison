@@ -25,8 +25,9 @@ lcdDisplay = lcd.Jhd1313m1(0, 0x3E, 0x62)
 lcdDisplay.setColor(0,0,0)
 entra=False
 sale=False
+lcdDisplay.setCursor(0, 0)
 lcdDisplay.write(str(counter))
-
+lcdDisplay.setColor(0,0,0)
 # Read the input and print, waiting one second between readings
 while 1:
     
@@ -34,6 +35,8 @@ while 1:
         
     if(entra):
         if(button2.read()!=0):
+            lcdDisplay.setCursor(0, 0)
+            lcdDisplay.write("                ")
             lcdDisplay.setCursor(0, 0)
             counter = counter + 1
             lcdDisplay.write(str(counter))
@@ -57,12 +60,15 @@ while 1:
     if(sale):
         if(button.read()!=0):
             lcdDisplay.setCursor(0, 0)
+            lcdDisplay.write("                ")
+            lcdDisplay.setCursor(0, 0)
             counter = counter - 1
             lcdDisplay.write(str(counter))
             r = random.randint(0, 255)
             g = random.randint(0, 255)
             b = random.randint(0, 255)
             lcdDisplay.setColor(r,g,b)
+            
             print("Boton 1 presionado, salio")
             ledPin.write(0)
             entra=False
