@@ -1,8 +1,9 @@
 import json
 import urllib
-from pip._vendor.requests.packages.urllib3.connectionpool import xrange
+
 from setuptools.command.build_ext import if_dl
 from builtins import int
+
 url='http://10.43.14.124:3000/api'
 r = urllib.request.urlopen(url)
 
@@ -11,14 +12,14 @@ contador=0
 print(data['name'])
 palabra= str(r.read())
 
-for y in xrange(3, palabra.__len__()):
+for y in range(3, palabra.__len__()):
         if(palabra[y]=="{"):
             contador=contador+1;
 
 arreglo = ['']*contador
 contador=-1
 escribe=False
-for x in xrange(3, palabra.__len__()):
+for x in range(3, palabra.__len__()):
     if (palabra[x]=="{"):
         contador=contador+1
         escribe=True
