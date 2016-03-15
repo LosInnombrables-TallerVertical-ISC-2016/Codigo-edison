@@ -1,5 +1,5 @@
 import json
-import urllib.request
+import urllib
 from pip._vendor.requests.packages.urllib3.connectionpool import xrange
 from setuptools.command.build_ext import if_dl
 from builtins import int
