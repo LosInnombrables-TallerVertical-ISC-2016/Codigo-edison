@@ -1,7 +1,7 @@
 import json
 import urllib
+import urllib.request
 
-from setuptools.command.build_ext import if_dl
 from builtins import int
 
 url='http://10.43.14.124:3000/api'
