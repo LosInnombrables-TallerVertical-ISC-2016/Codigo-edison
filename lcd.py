@@ -86,7 +86,7 @@ while 1:
         lcdDisplay.setCursor(0, 0)
         lcdDisplay.write("Best: "+"YOLO")
         lcdDisplay.setCursor(1, 0)
-        lcdDisplay.write("Lugares: "+disponibles)
+        lcdDisplay.write("Lugares: "+str(disponibles))
         time.sleep(0.5)
 
 
