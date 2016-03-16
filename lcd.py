@@ -49,31 +49,16 @@ button = mraa.Gpio(2)
 button.dir(mraa.DIR_IN)
 
 
-#Inicializar led
-ledPin = mraa.Gpio(5)
-ledPin.dir(mraa.DIR_OUT)
-ledPin.write(1)
-
 #Crete the lcd object
 lcdDisplay = lcd.Jhd1313m1(0, 0x3E, 0x62)
 lcdDisplay.setColor(255,255,255)
 lcdDisplay.setCursor(0, 0)
-lcdDisplay.write(str(area["name"]))
+lcdDisplay.write("hola")
 lcdDisplay.setCursor(1, 7)
 lcdDisplay.write(str(disponibles) + "/"+ str(capacidad))
-entra=False
-sale=False
 
-#Color blanco para la pantalla y rojo si el estacionamiento esta lleno
-if(disponible == 0):
-    r = 204
-    g = 6
-    b = 5
-else:
-    r = 205
-    g = 205
-    b = 205
-lcdDisplay.setColor(r,g,b)
+
+
 
 # Le la entrada de un boton
 while 1:
@@ -105,17 +90,7 @@ while 1:
         time.sleep(0.5)
 
 
-    #Pinta de color blando la pantalla si hay lugares disponibles y de rojo si estan ocupados
-    if(dsiponibles == 0):
-        r = 204
-        g = 6
-        b = 5
-    else:
-        r = 205
-        g = 205
-        b = 205
-
-    lcdDisplay.setColor(r,g,b)
+    
 
 # Delete the button object
 del button
