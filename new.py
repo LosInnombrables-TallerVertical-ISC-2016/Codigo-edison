@@ -5,6 +5,7 @@ import mraa
 import pyupm_i2clcd as lcd
 import sys
 import random
+import os
 
 import json
 import urllib
@@ -89,6 +90,7 @@ while 1:
         
     if(entra):
         if(button2.read()!=0):
+            os.system('curl -X PUT -H "Cache-Control: no-cache" -H "Content-Type: application/x-www-form-urlencoded" -d "name=Area 1&generalAvailable=1" "http://localhost:3000/api/"')
             lcdDisplay.setCursor(1, 0)
             lcdDisplay.write("                ")
             lcdDisplay.setCursor(1, 0)
