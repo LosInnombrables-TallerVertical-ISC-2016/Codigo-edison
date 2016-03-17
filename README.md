@@ -68,4 +68,4 @@ button = mraa.Gpio(2)
 button2 = mraa.Gpio(3)
 ```
 
-![Image of Yaktocat](https://octodex.github.com/images/yaktocat.png)
+![Edison Source Code Diagram](EdisonSourceCodeDiagram.png)
