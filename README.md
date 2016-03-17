@@ -60,7 +60,7 @@ button3.dir(mraa.DIR_IN)
 button4.dir(mraa.DIR_IN)
 ```
 
-####area-type-2.py: it has two sensors, that are used to simulate ane entrance that can be used as an exit.
+####area-type-2.py: it has two sensors, that are used to simulate one entrance that can be used as an exit.
 ```python
 # Create the button object using GPIO pin 2
 button = mraa.Gpio(2)
