@@ -27,9 +27,9 @@ It also detects when a vehicle enters or gets out of this area, and it adds or s
 
 This are the variables that all the scripts have in common, they are necesary for the connections with the database and to make the scripts work:
 
-**areaName:* This is the variable that has the name of the area to administrate, and there should be an area named like this in the database. 
+* **areaName:** This is the variable that has the name of the area to administrate, and there should be an area named like this in the database. 
 
-**server:* This variable contains the address of the server.
+* **server:** This variable contains the address of the server.
 
 ####
 
