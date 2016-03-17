@@ -43,29 +43,37 @@ overload = 0
 button = mraa.Gpio(2)
 # Create the buzzer object using GPIO pin 3
 button2 = mraa.Gpio(3)
-
 button.dir(mraa.DIR_IN)
 button2.dir(mraa.DIR_IN)
+# Create the button object using GPIO pin 6
+button3 = mraa.Gpio(6)
+# Create the buzzer object using GPIO pin 7
+button4 = mraa.Gpio(7)
+button3.dir(mraa.DIR_IN)
+button4.dir(mraa.DIR_IN)
 
-#Inicializar led
+#Inicializar led 
 ledPin = mraa.Gpio(5)
 ledPin.dir(mraa.DIR_OUT)
-ledPin.write(1)
 
-#Crete the lcd object
+if(occupied<capacity):
+    ledPin.write(1)
+else:
+    ledPin.write(0)
+
 
 entra=False
 sale=False
+entra2=False
+sale2=False
 
-
-
+print("ocupados: "+str(occupied)+" de "+str(capacity))
 
 # Read the input and print, waiting one second between readings
 while 1:
+    #Primera entrada o salida
     if(entra):
         if(button2.read()!=0):
-            
-
             if(occupied + 1 <= capacity):
                 occupied = occupied + 1
                 subprocess.check_call(['curl', '-X', 'PUT', '-H', "Cache-Control: no-cache",
@@ -73,11 +81,8 @@ while 1:
             else:
                 overload = overload + 1
 
-            
-
-
             print("Boton 2 presionado, entro")
-            ledPin.write(0)
+            print("ocupados: "+str(occupied)+" de "+str(capacity))
             entra=False
             sale=False
             time.sleep(0.5)
@@ -85,10 +90,9 @@ while 1:
     else:
         if(button2.read() != 0):
             sale=True
-            ledPin.write(1)
+            
             print("Boton 2 presionado")
             time.sleep(0.5)
-
 
     if(sale):
         if(button.read()!=0):
@@ -105,20 +109,73 @@ while 1:
             
 
             print("Boton 1 presionado, salio")
-            ledPin.write(0)
+            
             entra=False
             sale=False
             time.sleep(0.5)
     else:
         if(button.read() != 0):
             entra=True
-            ledPin.write(1)
             print("Boton 1 presionado")
             
 
             time.sleep(0.5)
+            
+            
+    #segunda entrada o salida
+    if(entra2):
+        if(button4.read()!=0):
+            if(occupied + 1 <= capacity):
+                occupied = occupied + 1
+                subprocess.check_call(['curl', '-X', 'PUT', '-H', "Cache-Control: no-cache",
+                    '-H', "Content-Type: application/x-www-form-urlencoded", '-d', "name=Area 1&generalAvailable=-1", server])
+            else:
+                overload = overload + 1
 
-   
+            print("Boton 2 presionado, entro")
+            print("ocupados: "+str(occupied)+" de "+str(capacity))
+            entra2=False
+            sale2=False
+            time.sleep(0.5)
+            #subprocess.check_call('curl -X PUT -H "Cache-Control: no-cache" -H "Content-Type: application/x-www-form-urlencoded" -d "name=Area 1&generalAvailable=-1" '+server)
+    else:
+        if(button4.read() != 0):
+            sale2=True
+            
+            print("Boton 2 presionado")
+            time.sleep(0.5)
+
+    if(sale2):
+        if(button3.read()!=0):
+            
+
+            if(occupied - 1 >= 0):
+                if(overload == 0):
+                    occupied = occupied - 1
+                    subprocess.check_call(['curl', '-X', 'PUT', '-H', "Cache-Control: no-cache",
+                        '-H', "Content-Type: application/x-www-form-urlencoded", '-d', "name=Area 1&generalAvailable=1", server])
+                else:
+                    overload = overload - 1
+
+            
+
+            print("Boton 1 presionado, salio")
+            
+            entra2=False
+            sale2=False
+            time.sleep(0.5)
+    else:
+        if(button3.read() != 0):
+            entra2=True
+            print("Boton 1 presionado")
+            time.sleep(0.5)
+    
+    
+    #Led indicador de capacidad llena o no
+    if(occupied<capacity):
+        ledPin.write(1)
+    else:
+        ledPin.write(0)
 
     
 
