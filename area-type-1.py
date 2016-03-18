@@ -28,10 +28,12 @@ jsonResult = json.loads(jsonStr);
 size = len(jsonResult)
 
 #Buscar objeto del area a administrar
-for i in (0, size - 1):
+i=0
+while (i<size):
     print(jsonResult[i])
     if(jsonResult[i]["name"] == areaName):
         area = jsonResult[i]
+    i=i+1
 
 #Espacios ocupados
 occupied = area['generalCapacity'] - area['generalAvailable']
