@@ -1,3 +1,4 @@
+![Slogan](Slogan.png)
 # Codigo-edison
 Code an scripts for the Edison boards.
 
