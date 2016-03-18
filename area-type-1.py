@@ -11,7 +11,7 @@ import urllib
 import subprocess
 
 #Area que administra
-areaName = "Area 1"
+areaName = "A"
 
 #Direccion del servidor
 server='http://10.43.14.124:3000/api'
